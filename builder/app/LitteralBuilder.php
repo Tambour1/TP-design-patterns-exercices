@@ -2,25 +2,25 @@
 
 namespace App;
 
-class MySQLQueryBuilder implements QueryBuilderInterface
+class LitteralBuilder implements QueryBuilderInterface
 {
     protected string $query = '';
 
     public function select(string $fields): QueryBuilderInterface
     {
-        $this->query = "SELECT $fields";
+        $this->query = "Je selectionne $fields";
         return $this;
     }
 
     public function from(string $table): QueryBuilderInterface
     {
-        $this->query .= " FROM $table";
+        $this->query .= " de la table $table";
         return $this;
     }
 
     public function where(string $condition): QueryBuilderInterface
     {
-        $this->query .= " WHERE $condition";
+        $this->query .= " où $condition";
         return $this;
     }
 
