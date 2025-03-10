@@ -2,15 +2,19 @@
 
 namespace App;
 
-class User 
+class User implements Observer
 {
-    // Hors exercice mais notable:
-    // Promotion du constructeur: https://www.php.net/manual/fr/language.oop5.decon.php#language.oop5.decon.constructor.promotion
+    private bool $notified = false;
+
     public function __construct(
-        private string $name,
-        private bool $notified = false
+        private string $name
     ) {}
 
+    public function update(string $concertInfo): void
+    {
+        $this->notified = true;
+        echo "{$this->name} a été notifié: $concertInfo\n";
+    }
 
     public function isNotified(): bool
     {
